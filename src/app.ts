@@ -5,7 +5,7 @@ import helmet from "helmet";
 import cors from "cors";
 import pinoHttp from "pino-http";
 import { sql } from "drizzle-orm";
-import { env } from "./config/env";
+// import { env } from "./config/env";
 import { db } from "./db";
 
 export const app: Express = express();
@@ -43,8 +43,4 @@ app.get("/api/v1/health/db", async (_req, res) => {
       }
     });
   }
-});
-
-app.listen(env.PORT, () => {
-  console.log(`Server is running at http://localhost:${env.PORT}`);
 });
