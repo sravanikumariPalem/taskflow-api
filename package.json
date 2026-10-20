@@ -25,6 +25,7 @@
   "homepage": "https://github.com/sravanikumariPalem/taskflow-api#readme",
   "description": "",
   "dependencies": {
+    "argon2": "^0.45.1",
     "cors": "^2.8.6",
     "dotenv": "^18.0.8",
     "drizzle-orm": "^0.45.4",
