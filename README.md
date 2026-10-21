@@ -31,7 +31,10 @@ TaskFlow is a project and task management platform built with Node.js, Express, 
 - Password length validation
 - Optional display-name validation
 - Strict rejection of unexpected registration fields
-
+- Authentication router mounted at `/api/v1/auth`
+- Registration request validation using the Zod schema
+- Structured validation error responses for invalid requests
+- Registration endpoint scaffolded; user creation is not implemented yet
 ## Project Structure
 
 ```text
