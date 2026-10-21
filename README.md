@@ -35,6 +35,11 @@ TaskFlow is a project and task management platform built with Node.js, Express, 
 - Registration request validation using the Zod schema
 - Structured validation error responses for invalid requests
 - Registration endpoint scaffolded; user creation is not implemented yet
+- User registration endpoint: `POST /api/v1/auth/register`
+- Request validation using Zod
+- Password hashing using Argon2
+- Duplicate email handling with HTTP 409 Conflict
+- Registration response excludes password and password hash
 ## Project Structure
 
 ```text
@@ -114,8 +119,8 @@ Schema changes are managed using Drizzle Kit migrations.
 - [x] Add application and database health endpoints
 - [x] Separate app configuration from server startup
 - [x] Validate user registration input with Zod
-- [ ] Hash passwords securely with Argon2
-- [ ] Implement user registration
+- [x] Hash passwords securely with Argon2
+- [x] Implement user registration
 - [ ] Implement login, access tokens, refresh tokens, and logout
 - [ ] Add workspaces, memberships, projects, and tasks
 - [ ] Add authorization, tests, and production hardening
