@@ -4,9 +4,8 @@ import type { Express } from "express";
 import helmet from "helmet";
 import cors from "cors";
 import pinoHttp from "pino-http";
-import { sql } from "drizzle-orm";
 import {authRouter} from "./modules/auth/auth.routes";
-import { db } from "./db";
+import {errorHandler} from "./middleware/error-handler";
 
 export const app: Express = express();
 
@@ -14,6 +13,7 @@ app.disable("x-powered-by");
 app.use(express.json());
 app.use(helmet());
 app.use(cors());
+app.use(errorHandler);
 app.use(pinoHttp());
 app.use(express.json());
 
