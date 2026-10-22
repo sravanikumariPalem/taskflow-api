@@ -14,7 +14,12 @@ const envSchema = z.object({
     .max(65535)
     .default(3000),
 
-  DATABASE_URL: z.string().url()
+  DATABASE_URL: z.string().url(),
+
+  JWT_ACCESS_SECRET: z
+  .string()
+  .regex(/^[a-fA-F0-9]{64}$/, "JWT_ACCESS_SECRET must be 64 hexadecimal characters"),
+  
 });
 
 export const env = envSchema.parse(process.env);
