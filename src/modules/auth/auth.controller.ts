@@ -1,8 +1,11 @@
 import type {Response, Request, NextFunction} from "express";
-import {registerSchema} from "./auth.validation";
+import {registerSchema, loginSchema} from "./auth.validation";
 import {
     EmailAlreadyExistsError, registerUser
 } from "./auth.service";
+import {loginUser} from "./auth.login.service";
+import {InvalidCredentialsError} from "./auth.errors";
+
 export async function registerController(req: Request, res: Response, next: NextFunction) {
     const result = registerSchema.safeParse(req.body);
     if (!result.success) {
@@ -35,4 +38,44 @@ export async function registerController(req: Request, res: Response, next: Next
         }
         return next(error);
     }
+}
+
+
+export async function loginController(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  const validation = loginSchema.safeParse(req.body);
+
+  if (!validation.success) {
+    res.status(400).json({
+      success: false,
+      message: "Validation failed",
+      errors: validation.error.issues.map((issue) => ({
+        field: issue.path.join("."),
+        message: issue.message,
+      })),
+    });
+    return;
+  }
+
+  try {
+    const user = await loginUser(validation.data);
+
+    res.status(200).json({
+      success: true,
+      data: { user },
+    });
+  } catch (error: unknown) {
+    if (error instanceof InvalidCredentialsError) {
+      res.status(401).json({
+        success: false,
+        message: "Invalid email or password",
+      });
+      return;
+    }
+
+    next(error);
+  }
 }
