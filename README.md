@@ -40,6 +40,8 @@ TaskFlow is a project and task management platform built with Node.js, Express, 
 - Password hashing using Argon2
 - Duplicate email handling with HTTP 409 Conflict
 - Registration response excludes password and password hash
+- Login credential verification using Argon2
+- Consistent invalid-credentials errors for unknown emails and incorrect passwords
 ## Project Structure
 
 ```text
