@@ -49,6 +49,10 @@ TaskFlow is a project and task management platform built with Node.js, Express, 
 - Login responses include Bearer token metadata
 - Cryptographically random refresh-token generation
 - SHA-256 hashing for refresh-token storage
+- Refresh-token sessions stored in PostgreSQL
+- Only SHA-256 hashes of refresh tokens are persisted
+- Refresh sessions expire after 7 days
+- Revoked and expired sessions are rejected
 ## Project Structure
 
 ```text
