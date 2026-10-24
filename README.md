@@ -47,6 +47,8 @@ TaskFlow is a project and task management platform built with Node.js, Express, 
 - Login endpoint returns a signed JWT access token
 - Access tokens use HS256 and expire after 15 minutes
 - Login responses include Bearer token metadata
+- Cryptographically random refresh-token generation
+- SHA-256 hashing for refresh-token storage
 ## Project Structure
 
 ```text
